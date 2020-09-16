@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/index.css" />
+
+    <title>Slider Carousel Interaction</title>
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+        <div class="sidebar">
+            <div class="sidebar-content">
+                <h2 class="sidebar-title">New Arrivals</h2>
+                <ul class="sidebar-navigation-menu">
+                    <li class="sidebar-navigation-menu-item">All</li>
+                    <li class="sidebar-navigation-menu-item">Shirting</li>
+                    <li class="sidebar-navigation-menu-item">Outerwear</li>
+                    <li class="sidebar-navigation-menu-item">Knitwear</li>
+                    <li class="sidebar-navigation-menu-item">Tees & Seats</li>
+                </ul>
+            </div>
+        </div>
+        <div class="image-container">
+        </div>
+        <div class="text-container">
+        </div>
+
+        <div class="carousel" id="carousel">
+            <div class="carousel-page">
+                <div class="carousel-image-container">
+                    <div class="carousel-bg-image-wrapper">
+                        <img class="carousel-bg-image" src="./assets/images/carousel-bg-image-1.jpg" />
+                    </div>
+                    <img class="carousel-image" src="./assets/images/carousel-image-1.png">
+                </div>
+                <div class="carousel-content-wrapper">
+                    <div class="carousel-content">
+                        <h1 class="carousel-content-title">Western Jacket | Navy Cord</h1>
+                        <h3 class="carousel-content-price">$87.93</h3>
+                        <p class="carousel-content-description">
+                            At Percival we think all our styles should be considered staples of any self respecting
+                            gents wardrobe. This season we've added the Western jacket, cut in a soft cotton cord, it
+                            will see you through everything the west has to throw at you. Pair with our new navy
+                            trousers for a strong look.
+                        </p>
+                        <button class="carousel-content-button">Quick View</button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-page">
+                <div class="carousel-image-container">
+                    <div class="carousel-bg-image-wrapper">
+                        <img class="carousel-bg-image" src="./assets/images/carousel-bg-image-2.jpg" />
+                    </div>
+                    <img class="carousel-image" src="./assets/images/carousel-image-2.png">
+                </div>
+                <div class="carousel-content-wrapper">
+                    <div class="carousel-content">
+                        <h1 class="carousel-content-title">Vincent Button | Espresso Cotton Suede</h1>
+                        <h3 class="carousel-content-price">$149.00</h3>
+                        <p class="carousel-content-description">
+                            Cut in the Percival signature jacket style, fabricated in a soft cotton suede, this piece 
+                            is a modern take on a retro look. The Vincent is made to transcend you through the seasons. 
+                            We recommend dry clean only.
+                        </p>
+                        <button class="carousel-content-button">Quick View</button>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-page">
+                <div class="carousel-image-container">
+                    <div class="carousel-bg-image-wrapper">
+                        <img class="carousel-bg-image" src="./assets/images/carousel-bg-image-3.jpg" />
+                    </div>
+                    <img class="carousel-image" src="./assets/images/carousel-image-3.png">
+                </div>
+                <div class="carousel-content-wrapper">
+                    <div class="carousel-content">
+                        <h1 class="carousel-content-title">Zip Polo Knit | Blue</h1>
+                        <h3 class="carousel-content-price">$59.00</h3>
+                        <p class="carousel-content-description">
+                            Harking back to the summer photos of your Father looking ridiculously stylish and carefree, 
+                            or maybe Roger Moore in the best Bond flicks, our new zip polo is a standout piece. 
+                        </p>
+                        <button class="carousel-content-button">Quick View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    const carousel = document.getElementById("carousel");
+    const carouselPages = carousel.children;
+    carouselPages[0].className = "carousel-page active";
+
+    document.addEventListener('wheel', move);
+    var currentPage = 0;
+    var MAX_PAGES = carouselPages.length - 1;
+    function move(event) {
+        const forward = event.deltaY < 0;
+
+        if (forward && !(currentPage >= MAX_PAGES)) {
+            currentPage += 1;
+            carouselPages[currentPage - 1].className = "carousel-page move-left";
+        } else if (!forward && !(currentPage <= 0)) {
+            currentPage -= 1;
+            carouselPages[currentPage + 1].className = "carousel-page";
+        }
+
+        carouselPages[currentPage].className = "carousel-page active";
+    }
+
+</script>
+
+</html>
