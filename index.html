@@ -115,11 +115,11 @@
         const forward = key === ARROW_RIGHT;
 
         if (forward && !(currentPage >= MAX_PAGES)) {
+            carouselPages[currentPage].className = "carousel-page move-left";
             currentPage += 1;
-            carouselPages[currentPage - 1].className = "carousel-page move-left";
         } else if (!forward && !(currentPage <= 0)) {
+            carouselPages[currentPage].className = "carousel-page";
             currentPage -= 1;
-            carouselPages[currentPage + 1].className = "carousel-page";
         }
 
         carouselPages[currentPage].className = "carousel-page active";
